@@ -1,6 +1,6 @@
 {
   "name": "unix-path-max",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Get the maximum permitted length of a path of a Unix domain socket",
   "license": "MIT",
   "repository": "sindresorhus/unix-path-max",

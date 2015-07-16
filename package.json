@@ -35,7 +35,7 @@
     "socket"
   ],
   "dependencies": {
-    "exec-file-sync": "^1.0.0"
+    "exec-file-sync": "^2.0.0"
   },
   "devDependencies": {
     "ava": "0.0.4",

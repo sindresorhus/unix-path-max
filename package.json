@@ -14,7 +14,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "node test.js",
+    "test": "ava",
     "compile": "gcc main.c -o \"main-$(node -e \"console.log(process.platform + '-' + process.arch)\")\"",
     "preinstall": "[ -e \"main-$(node -e \"console.log(process.platform + '-' + process.arch)\")\" ] && mv \"main-$(node -e \"console.log(process.platform + '-' + process.arch)\")\" main || gcc main.c -o main"
   },
@@ -38,7 +38,7 @@
     "exec-file-sync": "^2.0.0"
   },
   "devDependencies": {
-    "ava": "0.0.4",
+    "ava": "*",
     "path-exists": "^2.1.0"
   }
 }

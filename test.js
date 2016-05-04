@@ -1,20 +1,14 @@
-'use strict';
-var test = require('ava');
-var unixPathMax = require('./');
+import test from 'ava';
+import m from './';
 
-test.cb('async', function (t) {
-	t.plan(3);
-
-	unixPathMax(function (err, maxLength) {
-		t.ifError(err);
-		t.is(typeof maxLength, 'number');
-		t.true(maxLength > 0);
-		t.end();
-	});
+test('async', async t => {
+	const length = await m();
+	t.is(typeof length, 'number');
+	t.true(length > 0);
 });
 
-test('sync', function (t) {
-	var maxLength = unixPathMax.sync();
-	t.is(typeof maxLength, 'number');
-	t.true(maxLength > 0);
+test('sync', t => {
+	const length = m.sync();
+	t.is(typeof length, 'number');
+	t.true(length > 0);
 });

@@ -15,9 +15,9 @@ $ npm install --save unix-path-max
 ## Usage
 
 ```js
-var unixPathMax = require('unix-path-max');
+const unixPathMax = require('unix-path-max');
 
-unixPathMax(function (err, maxLength) {
+unixPathMax().then(maxLength => {
 	console.log(maxLength);
 	//=> 104
 });
@@ -25,6 +25,17 @@ unixPathMax(function (err, maxLength) {
 console.log(unixPathMax.sync());
 //=> 104
 ```
+
+
+## API
+
+### unixPathMax()
+
+Returns a Promise for the maximum permitted length of a path.
+
+### unixPathMax.sync()
+
+Returns the maximum permitted length of a path.
 
 
 ## CLI
@@ -41,4 +52,4 @@ $ unix-path-max
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)

@@ -1,26 +1,18 @@
 'use strict';
-var childProcess = require('child_process');
-var execFileSync = require('exec-file-sync');
+const execa = require('execa');
 
-module.exports = function (cb) {
+module.exports = () => {
+	if (process.platform === 'win32') {
+		return Promise.reject(new Error('Not supported on Windows'));
+	}
+
+	return execa.stdout('./main', {cwd: __dirname}).then(Number);
+};
+
+module.exports.sync = () => {
 	if (process.platform === 'win32') {
 		throw new Error('Not supported on Windows');
 	}
 
-	childProcess.execFile('./main', {cwd: __dirname}, function (err, stdout) {
-		if (err) {
-			cb(err);
-			return;
-		}
-
-		cb(null, Number(stdout));
-	});
-}
-
-module.exports.sync = function (cb) {
-	if (process.platform === 'win32') {
-		throw new Error('Not supported on Windows');
-	}
-
-	return Number(execFileSync('./main', {cwd: __dirname}));
-}
+	return Number(execa.sync('./main', {cwd: __dirname}).stdout);
+};

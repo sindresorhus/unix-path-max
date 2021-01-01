@@ -1,4 +1,4 @@
-# unix-path-max [![Build Status](https://travis-ci.com/sindresorhus/unix-path-max.svg?branch=master)](https://travis-ci.com/sindresorhus/unix-path-max)
+# unix-path-max
 
 > Get the [maximum permitted length](https://serverfault.com/questions/641347/check-if-a-path-exceeds-maximum-for-unix-domain-socket) of a path of a Unix domain socket
 

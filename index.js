@@ -1,18 +1,24 @@
-'use strict';
-const execa = require('execa');
+import process from 'node:process';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import execa from 'execa';
 
-module.exports = () => {
-	if (process.platform === 'win32') {
-		return Promise.reject(new Error('Not supported on Windows'));
-	}
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-	return execa.stdout('./main', {cwd: __dirname}).then(Number);
-};
-
-module.exports.sync = () => {
+export async function unixPathMax() {
 	if (process.platform === 'win32') {
 		throw new Error('Not supported on Windows');
 	}
 
-	return Number(execa.sync('./main', {cwd: __dirname}).stdout);
-};
+	const {stdout} = await execa('./main', {cwd: __dirname});
+	return Number(stdout);
+}
+
+export function unixPathMaxSync() {
+	if (process.platform === 'win32') {
+		throw new Error('Not supported on Windows');
+	}
+
+	const {stdout} = execa.sync('./main', {cwd: __dirname});
+	return Number(stdout);
+}
